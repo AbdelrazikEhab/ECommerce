@@ -1,0 +1,36 @@
+import React from "react";
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Ratting from "../components/Ratting";
+
+const Product = ({ product }) => {
+  return (
+    <Card className="my-3  p-3 rounded">
+      <Link to={`/product/${product._id}`}>
+        <Card.Img src={product.image} variant="top" />
+      </Link>
+
+      <Card.Body>
+        <Link to={`/product/${product._id}`}>
+          <Card.Title as="div">
+            <h3>
+              <strong>{product.name}</strong>
+            </h3>
+          </Card.Title>
+        </Link>
+
+        <Card.Text as="div">
+          <Ratting
+            value={product.rating}
+            text={`${product.numReviews} reviews`}
+            color="gold"
+          />
+        </Card.Text>
+
+        <Card.Text as="h3">${product.price}</Card.Text>
+      </Card.Body>
+    </Card>
+  );
+};
+
+export default Product;
